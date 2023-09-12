@@ -31,6 +31,8 @@ void displayMultiplePeople(std::vector <Person> &people, int size = -1);
 void keepOnlyLetters(std::string &str);
 void keepOnlyNumbers(std::string &str);
 void convertStringToLower(std::string &str);
+int getMenuOption(unsigned min, unsigned max);
+void displayMenu();
 
 
 #endif

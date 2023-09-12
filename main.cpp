@@ -22,6 +22,10 @@ int main() {
     getPersonsFromCSV(people,path);
     displayMultiplePeople(people);
 
-
+    int menuChoice = 0;
+    do{
+        displayMenu();
+        menuChoice = getMenuOption(1,5);
+    } while(menuChoice != 5);
     return 0;
 }

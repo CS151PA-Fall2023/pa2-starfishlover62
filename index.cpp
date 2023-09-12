@@ -227,3 +227,41 @@ void getPersonsFromCSV(std::vector<Person> &vec, std::string path){
         }
     }
 }
+
+
+
+/**
+ * @brief Prompts the user for a menu option. 
+ * 
+ * @param min, the minimum value for the menu option
+ * @param max, the maximum value for the menu option
+ * @return int, value that the user selected
+ */
+int getMenuOption(unsigned min, unsigned max){
+    std::string input;
+    unsigned output;
+    do {
+        std::cout << "Enter a menu option (" << min << "-" << max << "): ";
+        input = "";
+        std::getline(std::cin,input);
+        if(!stringOnlyWhitespace(input)){ // Makes sure that the input was not empty
+            output = stringToInt(input);
+        }
+    } while(output < min || output > max);
+    return output;
+}
+
+
+/**
+ * @brief Displays the menu
+ * 
+ */
+void displayMenu(){
+    std::cout << std::endl << std::endl;
+    std::cout << "Person Lookup:" << std::endl;
+    std::cout << " 1. Print data in ascending order by last name" << std::endl;
+    std::cout << " 2. Print data in ascending order by SSN" << std::endl;
+    std::cout << " 3. Search by last name" << std::endl;
+    std::cout << " 4. Search by SSN" << std::endl;
+    std::cout << " 5. Exit" << std::endl;
+}
