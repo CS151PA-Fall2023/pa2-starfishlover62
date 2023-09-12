@@ -12,6 +12,7 @@
 #include <iostream>
 #include <fstream>
 
+#include "Person.h"
 #include "index.h"
 
 int main() {
