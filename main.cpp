@@ -15,7 +15,7 @@
 
 int main() {
 
-    Person joe("joe","gatto",1,123456789);
+    Person joe("joe","gatto",1,"123-45-6789");
     int scores[5] = {100,100,-100,200,100};
     joe.setTests(scores);
     displayPerson(&joe);

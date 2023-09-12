@@ -20,9 +20,9 @@ const int NUM_TESTS = 5;
 class Person {
 
 public:
-Person() : Person("","",0,0){};
-Person(std::string first, std::string last, int id, int ssn);
-Person(std::string first, std::string last, int id, int ssn, int scores[]);
+Person() : Person("John","Doe",0,"123-45-6789"){};
+Person(std::string first, std::string last, int id, std::string ssn);
+Person(std::string first, std::string last, int id, std::string ssn, int scores[]);
 Person(const Person & right);
 Person& operator=(const Person & right);
 bool operator==(const Person & right);
@@ -43,7 +43,7 @@ void setLastName(std::string last){
 void setId(int id){
     this->id = id;
 }
-void setSsn(int ssn){
+void setSsn(std::string ssn){
     this->ssn = ssn;
 }
 void setTests(int scores[]);
@@ -61,11 +61,6 @@ int getId(){
     return id;
 }
 
-int getSsn(){
-    return ssn;
-}
-
-
 int* getScores(){
     return testScores;
 }
@@ -74,14 +69,16 @@ double averageScore();
 
 std::string letterGrade();
 
-std::string formattedSSN();
+std::string getSsn(){
+    return ssn;
+}
 
 
 
 
 private:
-std::string firstName, lastName;
-int id, ssn;
+std::string firstName, lastName, ssn;
+int id;
 int * testScores;
 
 };

@@ -10,7 +10,7 @@
  */
 #include "index.h"
 
-Person::Person(std::string first, std::string last, int id, int ssn){
+Person::Person(std::string first, std::string last, int id, std::string ssn){
     testScores = nullptr;
     firstName = first;
     lastName = last;
@@ -21,7 +21,7 @@ Person::Person(std::string first, std::string last, int id, int ssn){
 }
 
 
-Person::Person(std::string first, std::string last, int id, int ssn, int scores[]) : Person(first,last,id,ssn) {
+Person::Person(std::string first, std::string last, int id, std::string ssn, int scores[]) : Person(first,last,id,ssn) {
     for(int i = 0; i < NUM_TESTS; ++i){
         if(scores[i] >= 0 && scores[i] <= 200){
             *(testScores+i) = scores[i];
@@ -125,21 +125,10 @@ std::string Person::letterGrade(){
     }
 }
 
-std::string Person::formattedSSN(){
-    std::string formatted = "";
-    std::string str = std::to_string(ssn);
-    for(int i = 0; i < 9; ++i){
-        if(i == 3 || i == 5){
-            formatted += "-";
-        }
-        formatted += str[i];
-    }
-    return formatted;
-}
 
 
 
 void displayPerson(Person *obj){
     std::cout << std::setw(3) << std::right << obj->getId() << std::setw(12) << std::right << obj->getLastName() << std::setw(12)
-        << std::right << obj->getFirstName() << std::setw(13) << obj->formattedSSN() <<  std::setw(4) << obj->letterGrade() << std::endl;
+        << std::right << obj->getFirstName() << std::setw(13) << obj->getSsn() <<  std::setw(4) << obj->letterGrade() << std::endl;
 }
