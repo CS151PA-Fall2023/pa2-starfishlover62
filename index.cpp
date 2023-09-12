@@ -26,6 +26,19 @@ void displayPerson(Person *obj){
 
 }
 
+void displayMultiplePeople(std::vector <Person> &people, int size){
+    if(size < 0){
+        for(unsigned i = 0; i < people.size(); ++i){
+            displayPerson(&people[i]);
+        }
+    } else{
+        unsigned sizeU = size;
+        for(unsigned i = 0; i < sizeU && i < people.size(); ++i){
+            displayPerson(&people[i]);
+        }
+    }
+}
+
 
 /**
  * @brief Opens a file for reading

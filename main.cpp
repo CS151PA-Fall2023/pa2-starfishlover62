@@ -20,9 +20,7 @@ int main() {
     std::vector<Person> people;
     std::string path = "grades.csv";
     getPersonsFromCSV(people,path);
-    for(unsigned i = 0; i < people.size(); ++i){
-        displayPerson(&people[i]);
-    }
+    displayMultiplePeople(people);
 
 
     return 0;
