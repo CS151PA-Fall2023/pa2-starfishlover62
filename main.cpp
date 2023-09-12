@@ -16,16 +16,12 @@
 
 int main() {
 
-    Person joe("joe","gatto",1,"123-45-6789");
-    int scores[5] = {100,100,-100,200,100};
-    joe.setTests(scores);
-    displayPerson(&joe);
-    std::ifstream ifile;
+    std::vector<Person> people;
     std::string path = "grades.csv";
-    openFile(ifile, path);
-    std::getline(ifile,path);
-    std::cout << path << std::endl;
-    ifile.close();
+    getPersonsFromCSV(people,path);
+    for(unsigned i = 0; i < people.size(); ++i){
+        displayPerson(&people[i]);
+    }
 
 
     return 0;
