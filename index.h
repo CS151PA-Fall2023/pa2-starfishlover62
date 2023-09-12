@@ -28,6 +28,9 @@ bool stringOnlyWhitespace(std::string str);
 void getPersonsFromCSV(std::vector<Person> &vec, std::string path);
 void displayPerson(Person *obj);
 void displayMultiplePeople(std::vector <Person> &people, int size = -1);
+void keepOnlyLetters(std::string &str);
+void keepOnlyNumbers(std::string &str);
+void convertStringToLower(std::string &str);
 
 
 #endif

@@ -41,6 +41,48 @@ void displayMultiplePeople(std::vector <Person> &people, int size){
 
 
 /**
+ * @brief Removes all characters from a string that are not letters
+ * 
+ * @param str, the string to be converted
+ */
+void keepOnlyLetters(std::string & str){
+    std::string newString = ""; // letters are added to this when they are encountered
+    for(unsigned i = 0; i < str.length(); ++i){
+        if((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')){ // If the letter is A-Z or a-z
+            newString += str[i];
+        }
+    }
+    str = newString; // The original string is then given the value of the string with only letters
+}
+
+
+/**
+ * @brief Removes all characters from a string that are not numbers
+ * 
+ * @param str, the string to be converted
+ */
+void keepOnlyNumbers(std::string & str){
+    std::string newString = ""; // numbers are added to this when they are encountered
+    for(unsigned i = 0; i < str.length(); ++i){
+        if(str[i] >= '0' && str[i] <= '9'){ // If the character is 0-9
+            newString += str[i];
+        }
+    }
+    str = newString; // The original string is then given the value of the string with only letters
+}
+
+
+void convertStringToLower(std::string &str){
+    for(unsigned i = 0; i < str.length(); ++i){
+        if(str[i] >= 'A' && str[i] <= 'Z'){
+            str[i] -= 'A';
+            str[i] += 'a';
+        }
+    }
+}
+
+
+/**
  * @brief Opens a file for reading
  * 
  * @param file, ifstream object for opening the file
