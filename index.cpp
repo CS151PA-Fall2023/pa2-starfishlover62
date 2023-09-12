@@ -39,6 +39,19 @@ void displayMultiplePeople(std::vector <Person> &people, int size){
     }
 }
 
+void displayMultiplePeople(std::vector <Person*> &people, int size){
+    if(size < 0){
+        for(unsigned i = 0; i < people.size(); ++i){
+            displayPerson(people[i]);
+        }
+    } else{
+        unsigned sizeU = size;
+        for(unsigned i = 0; i < sizeU && i < people.size(); ++i){
+            displayPerson(people[i]);
+        }
+    }
+}
+
 
 /**
  * @brief Removes all characters from a string that are not letters
@@ -264,4 +277,14 @@ void displayMenu(){
     std::cout << " 3. Search by last name" << std::endl;
     std::cout << " 4. Search by SSN" << std::endl;
     std::cout << " 5. Exit" << std::endl;
+}
+
+
+void pointPointerVector(std::vector<Person*> &ptrs, std::vector<Person> &people){
+    ptrs.clear();
+    Person * ptr;
+    for(unsigned i = 0; i < people.size(); ++i){
+        ptr = &(people[i]);
+        ptrs.push_back(ptr);
+    }
 }
