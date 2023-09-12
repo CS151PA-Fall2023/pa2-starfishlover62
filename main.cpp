@@ -10,6 +10,7 @@
  */
 
 #include <iostream>
+#include <fstream>
 
 #include "index.h"
 
@@ -19,7 +20,12 @@ int main() {
     int scores[5] = {100,100,-100,200,100};
     joe.setTests(scores);
     displayPerson(&joe);
-
+    std::ifstream ifile;
+    std::string path = "grades.csv";
+    openFile(ifile, path);
+    std::getline(ifile,path);
+    std::cout << path << std::endl;
+    ifile.close();
 
 
     return 0;

@@ -132,3 +132,63 @@ void displayPerson(Person *obj){
     std::cout << std::setw(3) << std::right << obj->getId() << std::setw(12) << std::right << obj->getLastName() << std::setw(12)
         << std::right << obj->getFirstName() << std::setw(13) << obj->getSsn() <<  std::setw(4) << obj->letterGrade() << std::endl;
 }
+
+
+/**
+ * @brief Opens a file for reading
+ * 
+ * @param file, ifstream object for opening the file
+ * @param path, string of the path to the file
+ */
+void openFile(std::ifstream &file, std::string path){
+    file.open(path);
+    if(!file){ // Checks if file was opened successfully
+        std::cout << "File at path /'" << path << "/' could not be opened."
+        << " Terminating program..." << std::endl;
+        exit(1);
+    }
+}
+
+
+/**
+ * @brief Opens a file for writing
+ * 
+ * @param file, ofstream object for opening the file
+ * @param path, string of the path to the file
+ */
+void openFile(std::ofstream &file, std::string path){
+    file.open(path);
+    if(!file){ // Checks if file was opened successfully
+        std::cout << "File at path /'" << path << "/' could not be opened."
+        << " Terminating program..." << std::endl;
+        exit(1);
+    }
+}
+
+
+/**
+ * @brief Converts the string data type into the integer type.
+ * Function will skip over any characters that are not a number, or negative sign
+ * Once a decimal is encountered, the function stops reading the string
+ * 
+ * @param str, the string to be converted
+ * @return int, the number as an integer
+ */
+int stringToInt(std::string str){
+    int num = 0; // Stores value to be returned
+    bool negative = false;
+    // Below loop repeats so long as the value at the index is not a decimal, and
+    // the index is less than length of the string
+    for(unsigned i = 0; str[i] != '.' && (i < str.length()); ++i){
+        if(str[i] >= '0' && str[i] <= '9'){
+            num *= 10; // Multiplies the working number by 10 to increase its place by one to the left
+            num += (str[i] - '0'); // Adds the current number to the working number
+        } else if(str[i] == '-'){
+            negative = true;
+        }
+    }
+    if(negative){
+        num *= -1;
+    }
+    return num;
+}

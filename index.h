@@ -14,6 +14,7 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 
 const int NUM_TESTS = 5;
 
@@ -83,6 +84,10 @@ int * testScores;
 
 };
 
+
+void openFile(std::ifstream &file, std::string path);
+void openFile(std::ofstream &file, std::string path);
+int stringToInt(std::string str);
 
 void displayPerson(Person *obj);
 
