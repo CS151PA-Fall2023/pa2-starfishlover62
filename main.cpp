@@ -42,11 +42,12 @@ int main() {
             sortBySSN(peoplePtrsSSN);
             displayMultiplePeople(peoplePtrsSSN);
         } else if(menuChoice == 3){
-
-            // Need to add prompt and output for if the person is not found
             std::string input;
+            std::cout << "Enter last name: " << std::flush;
             getline(std::cin,input);
-            searchByLastName(peoplePtrsLastName,input);
+            if(!searchByLastName(peoplePtrsLastName,input)){
+                std::cout << "No last name matches \'" << input << "\'." << std::endl;
+            }
         } else if(menuChoice == 4){
             
         } else {exit(1);}
