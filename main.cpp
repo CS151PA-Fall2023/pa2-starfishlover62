@@ -36,7 +36,8 @@ int main() {
         displayMenu();
         menuChoice = getMenuOption(1,5);
         if(menuChoice == 1){
-        
+        sortByLastName(peoplePtrsLastName);
+        displayMultiplePeople(peoplePtrsLastName);
         } else if(menuChoice == 2){
            
         } else if(menuChoice == 3){
