@@ -350,7 +350,7 @@ void sortBySSN(std::vector<Person*> &ptrs, bool descending){
 }
 
 
-bool searchByLastName(std::vector<Person*> &ptrs, std::string lastName){
+Person * searchByLastName(std::vector<Person*> &ptrs, std::string lastName){
     if(ptrs.size() > 0){
         sortByLastName(ptrs);
         keepOnlyLetters(lastName);
@@ -361,10 +361,10 @@ bool searchByLastName(std::vector<Person*> &ptrs, std::string lastName){
             keepOnlyLetters(checkName);
             convertStringToLower(checkName);
             if(lastName == checkName){
-                displayPerson(ptrs[i]);
-                return true;
+                Person * ptrReturn = ptrs[i];
+                return ptrReturn;
             }
         }
     }
-    return false;
+    return nullptr;
 }

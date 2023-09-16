@@ -45,8 +45,12 @@ int main() {
             std::string input;
             std::cout << "Enter last name: " << std::flush;
             getline(std::cin,input);
-            if(!searchByLastName(peoplePtrsLastName,input)){
+            Person * ptrToPerson = nullptr;
+            ptrToPerson = searchByLastName(peoplePtrsLastName,input);
+            if(ptrToPerson == nullptr){
                 std::cout << "No last name matches \'" << input << "\'." << std::endl;
+            } else {
+                displayPerson(ptrToPerson);
             }
         } else if(menuChoice == 4){
             
