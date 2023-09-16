@@ -53,7 +53,16 @@ int main() {
                 displayPerson(ptrToPerson);
             }
         } else if(menuChoice == 4){
-            
+            std::string input;
+            std::cout << "Enter SSN (with or without dashes): " << std::flush;
+            getline(std::cin,input);
+            Person * ptrToPerson = nullptr;
+            ptrToPerson = searchBySSN(peoplePtrsLastName,input);
+            if(ptrToPerson == nullptr){
+                std::cout << "No SSN matches \'" << input << "\'." << std::endl;
+            } else {
+                displayPerson(ptrToPerson);
+            }
         } else {exit(1);}
     } while(menuChoice != 5);
     return 0;

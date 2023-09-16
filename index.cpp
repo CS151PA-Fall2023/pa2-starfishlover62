@@ -368,3 +368,20 @@ Person * searchByLastName(std::vector<Person*> &ptrs, std::string lastName){
     }
     return nullptr;
 }
+
+Person * searchBySSN(std::vector<Person*> &ptrs, std::string ssn){
+    if(ptrs.size() > 0){
+        sortBySSN(ptrs);
+        keepOnlyNumbers(ssn);
+        std::string checkSSN;
+        for(unsigned i = 0; i < ptrs.size(); ++i){
+            checkSSN = ptrs[i]->getSsn();
+            keepOnlyNumbers(checkSSN);
+            if(ssn == checkSSN){
+                Person * ptrReturn = ptrs[i];
+                return ptrReturn;
+            }
+        }
+    }
+    return nullptr;
+}
