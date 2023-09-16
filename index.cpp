@@ -289,7 +289,7 @@ void pointPointerVector(std::vector<Person*> &ptrs, std::vector<Person> &people)
     }
 }
 
-void sortByLastName(std::vector<Person*> &ptrs){
+void sortByLastName(std::vector<Person*> &ptrs, bool descending){
     unsigned swapIndex = 0;
     for(unsigned i = 0; i < ptrs.size(); ++i){
         swapIndex = i;
@@ -300,9 +300,16 @@ void sortByLastName(std::vector<Person*> &ptrs){
             std::string tempStr = ptrs[j]->getLastName();
             convertStringToLower(tempStr);
             keepOnlyLetters(tempStr);
-            if(tempStr<swapStr){
-                swapIndex = j;
-                swapStr = tempStr;
+            if(descending){
+                if(tempStr>swapStr){
+                    swapIndex = j;
+                    swapStr = tempStr;
+                }
+            } else {
+                if(tempStr<swapStr){
+                    swapIndex = j;
+                    swapStr = tempStr;
+                }
             }
         }
         if(swapIndex != i){

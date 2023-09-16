@@ -38,7 +38,7 @@ int getMenuOption(unsigned min, unsigned max);
 void displayMenu();
 
 void pointPointerVector(std::vector<Person*> &ptrs, std::vector<Person> &people);
-void sortByLastName(std::vector<Person*> &ptrs);
+void sortByLastName(std::vector<Person*> &ptrs, bool descending = false);
 
 
 #endif
