@@ -306,7 +306,7 @@ void sortByLastName(std::vector<Person*> &ptrs){
             }
         }
         if(swapIndex != i){
-            Person * tempPtr = ptrs[swapIndex];
+            Person * tempPtr = ptrs[i];
             ptrs[i] = ptrs[swapIndex];
             ptrs[swapIndex] = tempPtr;
         }
