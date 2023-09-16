@@ -39,7 +39,8 @@ int main() {
             sortByLastName(peoplePtrsLastName);
             displayMultiplePeople(peoplePtrsLastName);
         } else if(menuChoice == 2){
-           
+            sortBySSN(peoplePtrsSSN);
+            displayMultiplePeople(peoplePtrsSSN);
         } else if(menuChoice == 3){
 
         } else if(menuChoice == 4){

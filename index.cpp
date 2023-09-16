@@ -319,3 +319,32 @@ void sortByLastName(std::vector<Person*> &ptrs, bool descending){
         }
     }
 }
+
+void sortBySSN(std::vector<Person*> &ptrs, bool descending){
+    unsigned swapIndex = 0;
+    for(unsigned i = 0; i < ptrs.size(); ++i){
+        swapIndex = i;
+        std::string swapStr = ptrs[swapIndex]->getSsn();
+        keepOnlyNumbers(swapStr);
+        for(unsigned j = i+1; j < ptrs.size(); ++j){
+            std::string tempStr = ptrs[j]->getSsn();
+            keepOnlyNumbers(tempStr);
+            if(descending){
+                if(tempStr>swapStr){
+                    swapIndex = j;
+                    swapStr = tempStr;
+                }
+            } else {
+                if(tempStr<swapStr){
+                    swapIndex = j;
+                    swapStr = tempStr;
+                }
+            }
+        }
+        if(swapIndex != i){
+            Person * tempPtr = ptrs[i];
+            ptrs[i] = ptrs[swapIndex];
+            ptrs[swapIndex] = tempPtr;
+        }
+    }
+}
