@@ -41,4 +41,6 @@ void pointPointerVector(std::vector<Person*> &ptrs, std::vector<Person> &people)
 void sortByLastName(std::vector<Person*> &ptrs, bool descending = false);
 void sortBySSN(std::vector<Person*> &ptrs, bool descending = false);
 
+bool searchByLastName(std::vector<Person*> &ptrs, std::string lastName);
+
 #endif

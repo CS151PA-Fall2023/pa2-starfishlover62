@@ -43,6 +43,10 @@ int main() {
             displayMultiplePeople(peoplePtrsSSN);
         } else if(menuChoice == 3){
 
+            // Need to add prompt and output for if the person is not found
+            std::string input;
+            getline(std::cin,input);
+            searchByLastName(peoplePtrsLastName,input);
         } else if(menuChoice == 4){
             
         } else {exit(1);}

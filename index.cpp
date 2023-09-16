@@ -348,3 +348,23 @@ void sortBySSN(std::vector<Person*> &ptrs, bool descending){
         }
     }
 }
+
+
+bool searchByLastName(std::vector<Person*> &ptrs, std::string lastName){
+    if(ptrs.size() > 0){
+        sortByLastName(ptrs);
+        keepOnlyLetters(lastName);
+        convertStringToLower(lastName);
+        std::string checkName;
+        for(unsigned i = 0; i < ptrs.size(); ++i){
+            checkName = ptrs[i]->getLastName();
+            keepOnlyLetters(checkName);
+            convertStringToLower(checkName);
+            if(lastName == checkName){
+                displayPerson(ptrs[i]);
+                return true;
+            }
+        }
+    }
+    return false;
+}
