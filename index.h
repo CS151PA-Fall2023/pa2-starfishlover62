@@ -40,8 +40,10 @@ void displayMenu();
 void pointPointerVector(std::vector<Person*> &ptrs, std::vector<Person> &people);
 void sortByLastName(std::vector<Person*> &ptrs, bool descending = false);
 void sortBySSN(std::vector<Person*> &ptrs, bool descending = false);
+void sortByFirstName(std::vector<Person*> &ptrs, bool descending = false);
 
 Person * searchByLastName(std::vector<Person*> &ptrs, std::string lastName);
+Person * searchByFirstName(std::vector<Person*> &ptrs, std::string firstName);
 Person * searchBySSN(std::vector<Person*> &ptrs, std::string ssn);
 
 

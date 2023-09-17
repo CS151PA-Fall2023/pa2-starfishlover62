@@ -273,10 +273,12 @@ void displayMenu(){
     std::cout << std::endl << std::endl;
     std::cout << "Person Lookup:" << std::endl;
     std::cout << " 1. Print data in ascending order by last name" << std::endl;
-    std::cout << " 2. Print data in ascending order by SSN" << std::endl;
-    std::cout << " 3. Search by last name" << std::endl;
-    std::cout << " 4. Search by SSN" << std::endl;
-    std::cout << " 5. Exit" << std::endl;
+    std::cout << " 2. Print data in ascending order by first name" << std::endl;
+    std::cout << " 3. Print data in ascending order by SSN" << std::endl;
+    std::cout << " 4. Search by last name" << std::endl;
+    std::cout << " 5. Search by first name" << std::endl;
+    std::cout << " 6. Search by SSN" << std::endl;
+    std::cout << " 7. Exit" << std::endl;
 }
 
 
@@ -298,6 +300,37 @@ void sortByLastName(std::vector<Person*> &ptrs, bool descending){
         keepOnlyLetters(swapStr);
         for(unsigned j = i+1; j < ptrs.size(); ++j){
             std::string tempStr = ptrs[j]->getLastName();
+            convertStringToLower(tempStr);
+            keepOnlyLetters(tempStr);
+            if(descending){
+                if(tempStr>swapStr){
+                    swapIndex = j;
+                    swapStr = tempStr;
+                }
+            } else {
+                if(tempStr<swapStr){
+                    swapIndex = j;
+                    swapStr = tempStr;
+                }
+            }
+        }
+        if(swapIndex != i){
+            Person * tempPtr = ptrs[i];
+            ptrs[i] = ptrs[swapIndex];
+            ptrs[swapIndex] = tempPtr;
+        }
+    }
+}
+
+void sortByFirstName(std::vector<Person*> &ptrs, bool descending){
+    unsigned swapIndex = 0;
+    for(unsigned i = 0; i < ptrs.size(); ++i){
+        swapIndex = i;
+        std::string swapStr = ptrs[swapIndex]->getFirstName();
+        convertStringToLower(swapStr);
+        keepOnlyLetters(swapStr);
+        for(unsigned j = i+1; j < ptrs.size(); ++j){
+            std::string tempStr = ptrs[j]->getFirstName();
             convertStringToLower(tempStr);
             keepOnlyLetters(tempStr);
             if(descending){
@@ -356,9 +389,9 @@ Person * searchByLastName(std::vector<Person*> &ptrs, std::string lastName){
     if(ptrs.size() > 0 && lastName.size() > 0){
         sortByLastName(ptrs);
         std::string checkName;
-        unsigned low = 0;
-        unsigned high = (ptrs.size()) - 1;
-        unsigned mid = 0;
+        int low = 0;
+        int high = (ptrs.size()) - 1;
+        int mid = 0;
         while (low <= high){
             mid = (low + high) / 2;
             checkName = ptrs[mid]->getLastName();
@@ -377,14 +410,41 @@ Person * searchByLastName(std::vector<Person*> &ptrs, std::string lastName){
     return nullptr;
 }
 
+Person * searchByFirstName(std::vector<Person*> &ptrs, std::string firstName){
+    keepOnlyLetters(firstName);
+    convertStringToLower(firstName);
+    if(ptrs.size() > 0 && firstName.size() > 0){
+        sortByFirstName(ptrs);
+        std::string checkName;
+        int low = 0;
+        int high = (ptrs.size()) - 1;
+        int mid = 0;
+        while (low <= high){
+            mid = (low + high) / 2;
+            checkName = ptrs[mid]->getFirstName();
+            keepOnlyLetters(checkName);
+            convertStringToLower(checkName);
+            if(firstName == checkName){
+                Person * ptrReturn = ptrs[mid];
+                return ptrReturn;
+            } else if(firstName < checkName){
+                high = mid + -1;
+            } else if(firstName > checkName){
+                low = mid + 1;
+            }
+        }
+    }
+    return nullptr;
+}
+
 Person * searchBySSN(std::vector<Person*> &ptrs, std::string ssn){
     keepOnlyNumbers(ssn);
     if(ptrs.size() > 0 && ssn.size() > 0){
         sortBySSN(ptrs);
         std::string checkSSN;
-        unsigned low = 0;
-        unsigned high = (ptrs.size()) - 1;
-        unsigned mid = 0;
+        int low = 0;
+        int high = (ptrs.size()) - 1;
+        int mid = 0;
         while (low <= high){
             mid = (low + high) / 2;
             checkSSN = ptrs[mid]->getSsn();
