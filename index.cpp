@@ -356,13 +356,21 @@ Person * searchByLastName(std::vector<Person*> &ptrs, std::string lastName){
         keepOnlyLetters(lastName);
         convertStringToLower(lastName);
         std::string checkName;
-        for(unsigned i = 0; i < ptrs.size(); ++i){
-            checkName = ptrs[i]->getLastName();
+        unsigned low = 0;
+        unsigned high = (ptrs.size()) - 1;
+        unsigned mid = 0;
+        while (low <= high){
+            mid = (low + high) / 2;
+            checkName = ptrs[mid]->getLastName();
             keepOnlyLetters(checkName);
             convertStringToLower(checkName);
             if(lastName == checkName){
-                Person * ptrReturn = ptrs[i];
+                Person * ptrReturn = ptrs[mid];
                 return ptrReturn;
+            } else if(lastName < checkName){
+                high = mid + -1;
+            } else if(lastName > checkName){
+                low = mid + 1;
             }
         }
     }
@@ -374,12 +382,20 @@ Person * searchBySSN(std::vector<Person*> &ptrs, std::string ssn){
         sortBySSN(ptrs);
         keepOnlyNumbers(ssn);
         std::string checkSSN;
-        for(unsigned i = 0; i < ptrs.size(); ++i){
-            checkSSN = ptrs[i]->getSsn();
+        unsigned low = 0;
+        unsigned high = (ptrs.size()) - 1;
+        unsigned mid = 0;
+        while (low <= high){
+            mid = (low + high) / 2;
+            checkSSN = ptrs[mid]->getSsn();
             keepOnlyNumbers(checkSSN);
             if(ssn == checkSSN){
-                Person * ptrReturn = ptrs[i];
+                Person * ptrReturn = ptrs[mid];
                 return ptrReturn;
+            } else if(ssn < checkSSN){
+                high = mid + -1;
+            } else if(ssn > checkSSN){
+                low = mid + 1;
             }
         }
     }
