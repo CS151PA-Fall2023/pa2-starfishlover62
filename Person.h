@@ -1,8 +1,8 @@
 /**
  * @file Person.h
  * @author Josh Gillum
- * @brief 
- * @version 0.1
+ * @brief Person class defintion
+ * @version 1.0
  * @date 2023-09-12
  * 
  * @copyright Copyright (c) 2023
@@ -26,14 +26,10 @@ Person() : Person("John","Doe",0,"123-45-6789"){};
 Person(std::string first, std::string last, int id, std::string ssn);
 Person(std::string first, std::string last, int id, std::string ssn, int scores[], std::string letter);
 Person(const Person & right);
+~Person();
 Person& operator=(const Person & right);
 bool operator==(const Person & right);
-~Person(){
-    if(testScores != 0 && testScores != nullptr){
-        delete [] testScores;
-    }
-    testScores = nullptr;
-}
+
 
 void setFirstName(std::string first){
     firstName = first;
@@ -89,7 +85,7 @@ std::string getSsn(){
 private:
 std::string firstName, lastName, ssn, grade;
 int id;
-int * testScores;
+int * testScores; // Array of test scores
 
 };
 

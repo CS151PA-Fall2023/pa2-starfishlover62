@@ -1,8 +1,9 @@
 /**
  * @file main.cpp
  * @author Josh Gillum
- * @brief 
- * @version 0.1
+ * @brief Program that will read data from a csv file, and provides
+ * an interface for the user to view this data
+ * @version 1.0
  * @date 2023-09-11
  * 
  * @copyright Copyright (c) 2023

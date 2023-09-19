@@ -1,8 +1,8 @@
 /**
  * @file index.h
  * @author Josh Gillum
- * @brief 
- * @version 0.1
+ * @brief Function prototypes
+ * @version 1.0
  * @date 2023-09-11
  * 
  * @copyright Copyright (c) 2023
