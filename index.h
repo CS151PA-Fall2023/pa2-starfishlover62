@@ -30,6 +30,7 @@ void keepOnlyNumbers(std::string &str);
 void convertStringToLower(std::string &str);
 
 void getPersonsFromCSV(std::vector<Person> &vec, std::string path);
+void displayHeader();
 void displayPerson(Person *obj);
 void displayMultiplePeople(std::vector <Person> &people, int size = -1);
 void displayMultiplePeople(std::vector <Person*> &people, int size = -1);

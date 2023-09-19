@@ -55,6 +55,7 @@ int main() {
             if(ptrToPerson == nullptr){
                 std::cout << "No last name matches \'" << input << "\'." << std::endl;
             } else {
+                displayHeader();
                 displayPerson(ptrToPerson);
             }
         } else if(menuChoice == 5){
@@ -66,6 +67,7 @@ int main() {
             if(ptrToPerson == nullptr){
                 std::cout << "No first name matches \'" << input << "\'." << std::endl;
             } else {
+                displayHeader();
                 displayPerson(ptrToPerson);
             }
         } else if(menuChoice == 6){
@@ -77,9 +79,13 @@ int main() {
             if(ptrToPerson == nullptr){
                 std::cout << "No SSN matches \'" << input << "\'." << std::endl;
             } else {
+                displayHeader();
                 displayPerson(ptrToPerson);
             }
         } else {exit(1);}
+        std::string temp;
+        std::cout << "Press enter to return to menu...";
+        std::getline(std::cin,temp);
     } while(menuChoice != 7);
     return 0;
 }

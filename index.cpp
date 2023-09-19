@@ -10,23 +10,23 @@
  */
 #include "index.h"
 
+void displayHeader(){
+    std::cout << std::endl << std::setw(3) << std::right << "ID" << std::setw(12) 
+        << std::right << "Last Name" << std::setw(12)
+        << std::right << "First Name" << std::setw(13) 
+        << "SSN    " <<  std::setw(4) << "Grade" << std::endl;
+}
+
 
 void displayPerson(Person *obj){
     std::cout << std::setw(3) << std::right << obj->getId() << std::setw(12) 
         << std::right << obj->getLastName() << std::setw(12)
         << std::right << obj->getFirstName() << std::setw(13) 
         << obj->getSsn() <<  std::setw(4) << obj->getGrade() << std::endl;
-   /*
-    std::cout << obj->getId() << std::endl;
-    std::cout << obj->getLastName() << std::endl;
-    std::cout << obj->getFirstName() << std::endl;
-    std::cout << obj->getSsn() << std::endl;
-    std::cout << obj->getGrade() << std::endl;
-    */
-
 }
 
 void displayMultiplePeople(std::vector <Person> &people, int size){
+    displayHeader();
     if(size < 0){
         for(unsigned i = 0; i < people.size(); ++i){
             displayPerson(&people[i]);
@@ -40,6 +40,7 @@ void displayMultiplePeople(std::vector <Person> &people, int size){
 }
 
 void displayMultiplePeople(std::vector <Person*> &people, int size){
+    displayHeader();
     if(size < 0){
         for(unsigned i = 0; i < people.size(); ++i){
             displayPerson(people[i]);
